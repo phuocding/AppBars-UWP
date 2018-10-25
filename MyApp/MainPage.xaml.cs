@@ -26,5 +26,24 @@ namespace MyApp
         {
             this.InitializeComponent();
         }
+
+        async void SaveFile()
+        {
+            FileSavePicker fileSavePicker = new FileSavePicker();
+            foreach (string key in FileTypeList.Keys)
+            {
+                fileSavePicker.FileTypeChoices.Add(key, FileTypeList[key]);
+            }
+            StorageFile file = await fileSavePicker.PickSaveFileAsync();
+            if (file != null)
+            {
+                var sf = await file.GetParentAsync();
+                var x = sf.Provider;
+                CachedFileManager.DeferUpdates(file);
+                await FileIO.WriteTextAsync(file, Text);
+                FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
+                FileName = file.Name;
+            }
+        }
     }
 }

@@ -9,6 +9,13 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="250,100,0,0" >
+            <AppBarButton Icon="Add" Margin="250,0,0,0" Label="SymbolIcon" Click="Add_Click"/>
+            <AppBarButton Icon="View" Margin="250,0,0,0" Label="SymbolIcon" Click="View_Click"/>
+            <TextBox x:Name="File Name" Header="File Name" Text="myfile.txt" Width="200" MaxLength="15" HorizontalAlignment="Left"></TextBox>
+            <TextBox x:Name="Content" Text="Hello World" Width="200" Height="50"></TextBox>
+            <Button x:Name="btnSave" Content="Save File" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
+        </StackPanel>
     </Grid>
 </Page>
